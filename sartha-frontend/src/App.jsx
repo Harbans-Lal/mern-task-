@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoginPage } from "./components/LoginPage";
 import { RegistrationPage } from "./components/RegistrationPage";
 import Dashboard from "./components/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export const myContext = createContext();
 
@@ -18,7 +19,7 @@ function App() {
               <Route path="/" element={<SignINandUp />} />
               <Route path="/signIn" element={<LoginPage />} />
               <Route path="/signUp" element={<RegistrationPage />} />
-              <Route path="/dashboard" element={valid?<Dashboard />:<LoginPage />} />
+              <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard /> }/>} />
           </Routes>
       </BrowserRouter>
       </myContext.Provider>
